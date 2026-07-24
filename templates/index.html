@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========================================== -->
+    <!-- 1. DOCUMENT SETUP & DEPENDENCIES           -->
+    <!-- ========================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IK Attendance | Verify</title>
+    
+    <!-- External Libraries: Google Fonts & Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Link to our external CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 2. NAVIGATION BAR                          -->
+    <!-- ========================================== -->
+    <nav>
+        <div class="logo">IK</div>
+        <div class="nav-links">
+            <a href="/" class="active">Verify</a>
+            <a href="/register_page">Register</a>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- 3. MAIN CONTENT (Camera & Verification)    -->
+    <!-- ========================================== -->
+    <main class="index-main">
+        
+        <!-- Page Titles -->
+        <h1>IDENTITY</h1>
+        <p class="subtitle">Secure Biometric Access</p>
+
+        <!-- The Live Webcam Feed -->
+        <div class="camera-card">
+            <video id="video" autoplay playsinline></video>
+            <div class="face-guide"></div>
+            <!-- Hidden canvas used secretly by JavaScript to take the picture -->
+            <canvas id="canvas" style="display:none;"></canvas>
+        </div>
+
+        <!-- The Action Button -->
+        <button id="markBtn">
+            <i data-lucide="camera"></i> Verify Attendance
+        </button>
+
+        <!-- Hidden Alert Card (Shows Success/Error messages) -->
+        <div id="statusCard" class="status-card">
+            <i id="statusIcon" data-lucide="check-circle"></i>
+            <span id="statusText">Status message here</span>
+        </div>
+        
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 4. FOOTER & SCRIPTS                        -->
+    <!-- ========================================== -->
+    <footer>
+        &copy; 2026 Iqtadar. All Rights Reserved.
+    </footer>
+
+    <!-- Link to our external JavaScript file -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+</html>
