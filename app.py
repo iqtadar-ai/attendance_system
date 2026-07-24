@@ -109,8 +109,8 @@ def mark_attendance():
         return jsonify({"error": "No face detected in frame."}), 400
         
     # Step 2: AI Security Check (YOLO checks if it's a real 3D human or a fake photo)
-    if not is_real_face(frame):
-        return jsonify({"error": "Spoofing detected! Live face required."}), 403
+    # if not is_real_face(frame):
+    #     return jsonify({"error": "Spoofing detected! Live face required."}), 403
         
     # Step 3: Download all known student faces from the database
     students = supabase.table('students').select('*').execute().data
