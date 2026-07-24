@@ -21,11 +21,18 @@ supabase: Client = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_
 
 
 def decode_image(base64_string):
-    """Helper Function: Converts the web browser image into a mathematical matrix for the AI."""
     encoded_data = base64_string.split(',')[1]
     nparr = np.frombuffer(base64.b64decode(encoded_data), np.uint8)
-    return cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
+    frame = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    
+    # Resize to cap memory usage — 480px width is plenty for face detection
+    max_width = 480
+    h, w = frame.shape[:2]
+    if w > max_width:
+        scale = max_width / w
+        frame = cv2.resize(frame, (max_width, int(h * scale)))
+    
+    return frame
 
 # ==========================================
 # WEB PAGE ROUTES (Serving the HTML)
